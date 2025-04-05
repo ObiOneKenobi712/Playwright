@@ -13,7 +13,7 @@ namespace PlaywrightLearning
         [Test]
         public async Task Test1()
         {
-            //Playwright
+            //Playwright 
             using var playwrigt = await Playwright.CreateAsync();
             //Browser
             await using var browser = await playwrigt.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
