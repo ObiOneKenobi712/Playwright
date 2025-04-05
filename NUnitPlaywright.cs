@@ -15,12 +15,14 @@ namespace PlaywrightLearning
         [Test]
         public async Task Test1()
         {
+            //Using Locators
             var linkLogin = Page.Locator(selector: "#loginLink");
             await linkLogin.ClickAsync();
             await Page.GotoAsync(url: "http://www.eaapp.somee.com");
             await Page.ClickAsync(selector: "#loginLink");
             await Page.FillAsync(selector: "#UserName", value: "admin");
             await Page.FillAsync(selector: "#Password", value: "password");
+            //Using Locator with Page Locator Options
             var btnLogin = Page.Locator(selector: "input", new PageLocatorOptions { HasTextString = "Log in" });
             await btnLogin.ClickAsync();
             //await Page.ClickAsync(selector: "#loginIn");
