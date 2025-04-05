@@ -34,5 +34,22 @@ namespace PlaywrightLearning
             var isExist = await page.Locator(selector: "text='Log off'").IsVisibleAsync();
             Assert.IsTrue(isExist);
         }
+
+        [Test]
+        public async Task WaitTest()
+        {
+            //Playwright 
+            using var playwrigt = await Playwright.CreateAsync();
+            //Browser
+            await using var browser = await playwrigt.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = false
+            });
+            var context = await browser.NewContextAsync();
+            var page = await browser.NewPageAsync();
+            await page.GotoAsync(url: "https://demos.telerik.com/kendo-ui/window/index");
+            await page.GetByRole(AriaRole.Button, new() { Name = "Close", Exact = true }).ClickAsync();
+            await page.GetByRole(AriaRole.Button, new() { Name = "Close", Exact = true }).ClickAsync();
+        }
     }
 }

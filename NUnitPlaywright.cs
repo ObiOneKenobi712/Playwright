@@ -9,12 +9,17 @@ namespace PlaywrightLearning
         [SetUp]
         public async Task Setup()
         {
-            await Page.GotoAsync(url: "http://www.eaapp.somee.com");
+            await Page.GotoAsync(url: "http://www.eaapp.somee.com", new PageGotoOptions
+            {
+                //Waiting till content loaded - extra
+                WaitUntil = WaitUntilState.DOMContentLoaded
+            });
         }
 
         [Test]
         public async Task Test1()
         {
+            Page.SetDefaultTimeout(10);
             //Using Locators
             var linkLogin = Page.Locator(selector: "#loginLink");
             await linkLogin.ClickAsync();
