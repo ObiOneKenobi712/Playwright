@@ -19,7 +19,6 @@ namespace PlaywrightLearning
             await using var browser = await playwrigt.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
             {
                 Headless = false
-
             });
             //Page
             var page = await browser.NewPageAsync();
@@ -29,6 +28,11 @@ namespace PlaywrightLearning
             {
                 Path = @"screenshotsPlaywrigth\EAAPP.jpg"
             });
+            await page.FillAsync(selector: "#UserName", value: "admin");
+            await page.FillAsync(selector: "#Password", value: "password");
+            await page.ClickAsync(selector: "#loginIn");
+            var isExist = await page.Locator(selector: "text='Log off'").IsVisibleAsync();
+            Assert.IsTrue(isExist);
         }
     }
 }
