@@ -26,6 +26,7 @@ namespace PlaywrightLearning
             await page.GotoAsync(url: "http://www.eaapp.somee.com");
             await page.ClickAsync(selector: "#loginLink");
             await page.ScreenshotAsync(new PageScreenshotOptions
+                //todo
             {
                 Path = @"screenshotsPlaywrigth\EAAPP.jpg"
             });
@@ -33,6 +34,8 @@ namespace PlaywrightLearning
             await page.FillAsync(selector: "#Password", value: "password");
             await page.ClickAsync(selector: "#loginIn");
             var isExist = await page.Locator(selector: "text='Log off'").IsVisibleAsync();
+            Assert.IsTrue(isExist);
+            Assert.IsTrue(isExist);
             Assert.IsTrue(isExist);
         }
 
